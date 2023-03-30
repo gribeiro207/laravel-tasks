@@ -58,3 +58,8 @@ Route::delete('/task/{id}', function ($id) {
 
     return redirect('/');
 });
+
+Route::get('/list', function() {
+    $tasks = Task::orderBy('created_at', 'asc')->get();
+    return response()->json($tasks);
+});
